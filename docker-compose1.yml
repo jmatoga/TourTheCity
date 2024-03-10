@@ -1,0 +1,80 @@
+version: "3.8"
+services:
+  tourthecity-flyway:
+    image: flyway/flyway
+    command: -url=jdbc:mysql://mysqldb:3306/tourthecitydb -schemas=myschema -user=admin -password=admin -connectRetries=60 migrate
+    depends_on:
+      - tourthecity-mysqldb
+    volumes:
+      - "./flyway/sql/test:/flyway/sql"
+    networks:
+      network:
+        ipv4_address: 172.18.0.2
+
+  tourthecity-mysqldb:
+    container_name: "tourthecity-mysqldb"
+    image: mysql:latest
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: tourthecitydb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      network:
+        ipv4_address: 172.18.0.3
+
+#  tourthecity-frontend:
+##    restart: always
+##    container_name: "tourthecity-frontend"
+##    build:
+##      context: ./frontend
+##      dockerfile: Dockerfile
+##    volumes:
+##      - "./frontend:/app"
+##      - "/app/node_modules"
+#    environment:
+#      - CHOKIDAR_USEPOLLING=true
+#      - WATCHPACK_POLLING=true
+#    networks:
+#      network:
+#        ipv4_address: 172.18.0.4
+
+  tourthecity-backend:
+      restart: always
+      container_name: "tourthecity-backend"
+      build:
+        context: backend
+        dockerfile: Dockerfile
+      working_dir: /backend
+      volumes:
+        - "./backend:/backend"
+      depends_on:
+        - tourthecity-mysqldb
+        - tourthecity-flyway
+      deploy:
+        resources:
+          limits:
+            memory: 2560m
+      networks:
+        network:
+          ipv4_address: 172.18.0.5
+
+#  backend:
+#    image: backend
+#    build: .
+#    restart: always
+#    ports:
+#      - "8090:8090"
+#    depends_on:
+#      - mysqldb
+  #    command: ["./wait-for-it.sh", "mysqldb:3306", "--", "java", "-jar", "app.jar"]
+networks:
+  network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
+          gateway: 172.18.0.1
