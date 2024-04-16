@@ -8,6 +8,7 @@ export default class AppContent extends React.Component {
       <div className="App">
         <WelcomeContent />
         <AuthContent />
+        
       </div>
     );
   }

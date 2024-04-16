@@ -1,6 +1,6 @@
 import "./App.css";
 import logo from "../logo.svg";
-import Header from "./Header";
+import Header from "./header/Header";
 import AppContent from "./AppContent";
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
           <div className="col-12">
             <AppContent />
           </div>
+          
         </div>
       </div>
     </div>

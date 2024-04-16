@@ -1,3 +1,9 @@
+.App{
+    background-image: url('../resources/background_cracow.png'); /* Ścieżka do obrazu */
+    background-size: cover; /* Dopasowanie obrazu do rozmiaru kontenera */
+    background-repeat: no-repeat; /* Wyłączenie powtarzania obrazu */
+    
+}
 .App-logo {
     animation: App-logo-spin infinite 20s linear;
     height: 80px;

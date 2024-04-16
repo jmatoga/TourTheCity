@@ -1,0 +1,26 @@
+.navbar{
+    background-color: #517703;
+    padding: 10px;
+    color: #CED4DA;
+}
+a.navbar-brand{
+    margin-left: 15px;
+    color: #F8F9FA;
+}
+a:hover.navbar-brand{
+    color: #F8F9FA;
+}
+a.nav-link{
+    color: #CED4DA;
+}
+a:hover.nav-link{
+    color: #CED4DA;
+    font-weight: bold;
+}
+a:focus.nav-link{
+    color: #CED4DA;
+    font-weight: bold;
+}
+#account-element-right{
+    margin-right: 20px;
+}
