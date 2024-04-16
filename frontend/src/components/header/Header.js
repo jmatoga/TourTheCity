@@ -32,7 +32,7 @@ function MainNavigationWithAlert() {
 
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-        <Nav.Link id="account-element-right" eventKey="/account">Konto</Nav.Link>
+        <Nav.Link id="account-element-right">Konto</Nav.Link>
         </Navbar.Collapse>
         
     </Navbar>
