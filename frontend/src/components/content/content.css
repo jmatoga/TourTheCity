@@ -1,0 +1,50 @@
+body{
+    overflow:hidden;
+}
+.gamemode-description{
+    text-align: center;
+    font-size: 14px;
+}
+#checkbox {
+    opacity: 0;
+    height: 0;
+}
+#hamburger-icon {
+    height: 30px;
+    width: 30px;
+}
+#hamburger-label {
+    
+    text-align: center;
+}
+
+.see-more-button{
+    display: none;
+    border-radius: 10px;
+    
+    margin-top: 1rem;
+    padding: 15px;
+    width: 300px;
+    background-color: #517703;
+    color: #CED4DA;
+}
+@media only screen and (max-width: 900px) {
+    body{
+        overflow: visible;
+    }
+    input:checked ~ .gamemode-content {
+        display: none;
+        opacity: 0;
+
+    }
+    #hamburger-label {
+        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .see-more-button{
+        display: block;
+    }
+    
+}

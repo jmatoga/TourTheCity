@@ -1,12 +1,10 @@
 body{
     overflow: hidden;
-
 }
 .App{
     background-image: url('../resources/background_cracow.png'); /* Ścieżka do obrazu */
     background-size: cover; /* Dopasowanie obrazu do rozmiaru kontenera */
-    background-repeat: no-repeat; /* Wyłączenie powtarzania obrazu */
-    
+    background-repeat: no-repeat; /* Wyłączenie powtarzania obrazu */    
 }
 .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -24,7 +22,6 @@ body{
     text-align: center;
 }
 #footer{
-    color: red;
     padding: 2vh;
     height: 6vh;
 }
@@ -35,7 +32,7 @@ body{
 .App-intro {
     font-size: large;
 }
-  
+
 @keyframes App-logo-spin {
     from {
       transform: rotate(0deg);

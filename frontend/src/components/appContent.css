@@ -1,0 +1,21 @@
+.AppContent {
+    display: flex;
+    flex-direction: column;
+}
+  
+.map-and-selector-container {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+  
+.map-container{
+    min-width: 550px;
+    flex: 1 1 50%;
+}
+.selector-container {
+    margin: 0 2rem 0 2rem;
+    flex: 1 0 30%;
+}
