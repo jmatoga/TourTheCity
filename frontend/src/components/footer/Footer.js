@@ -1,9 +1,9 @@
-import './footer.css'
+import './footer.css';
 
-export default function Footer(){
-    return(
+export default function FooterBar(){
+    return (
         <div id="footer">
-            Copyright &copy; 2024 - Tour the city
-        </div>
-    )
+        Copyright &copy; 2024 - Tour the city
+    </div>
+    );
 }

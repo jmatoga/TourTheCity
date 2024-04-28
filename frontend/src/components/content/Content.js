@@ -5,10 +5,15 @@ const GameSelector = () => {
   const [gameMode, setGameMode] = useState("Swobodna"); //hook stanu (useState) do definicji zmiennej gameMode (domyślnie Swobodna)
   const [selectedMap, setSelectedMap] = useState("");
   const [gameModeDescription, setGameModeDescription] = useState(<><h5>Jesteś w trybie swobodnego zwiedzania.</h5></>);
+  const [seeMoreLabel, setSeeMoreLabel] = useState("Zwiń zawartość");
+  
+  const handleSeeMoreLabel = () => {
+    setSeeMoreLabel(seeMoreLabel === 'Zobacz więcej' ? 'Zwiń zawartość' : 'Zobacz więcej');
+  }
+
   const handleGameModeChange = (e) => {
 
-    const selectedMode = e.target.value;
-
+  const selectedMode = e.target.value;
   // Aktualizacja opisu trybu gry w zależności od wybranego trybu
     switch(selectedMode) {
       case "Swobodna":
@@ -39,9 +44,9 @@ const GameSelector = () => {
 
   return (
     <div>
-      <label for="checkbox" id="hamburger-label">
+      <label for="checkbox" id="hamburger-label" onClick={handleSeeMoreLabel}>
         <div className="see-more-button">
-          Zobacz więcej
+          {seeMoreLabel}
         </div>
       </label>
       <input type="checkbox" id="checkbox"/>
@@ -50,7 +55,6 @@ const GameSelector = () => {
 
       <div className="gamemode-content">
         <div className="gamemode-description">
-          <br/>
           {gameModeDescription}
           Aby dostosować wypełnij poniższe pola.
         </div>

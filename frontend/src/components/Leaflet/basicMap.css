@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   max-width: 850px;
-  height: 75vh; /* calculate height of the screen minus the heading */
+  height: 73vh; /* calculate height of the screen minus the heading */
 }
   
 .rounded-map {
