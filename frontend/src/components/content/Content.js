@@ -1,20 +1,18 @@
 import React, { useState } from "react";
 import './content.css';
 
-const GameSelector = () => {
-  const [gameMode, setGameMode] = useState("Swobodna"); //hook stanu (useState) do definicji zmiennej gameMode (domyślnie Swobodna)
+const GameSelector = ({ onMapChange }) => {
+  const [gameMode, setGameMode] = useState("Swobodna");
   const [selectedMap, setSelectedMap] = useState("");
   const [gameModeDescription, setGameModeDescription] = useState(<><h5>Jesteś w trybie swobodnego zwiedzania.</h5></>);
   const [seeMoreLabel, setSeeMoreLabel] = useState("Zwiń zawartość");
-  
+
   const handleSeeMoreLabel = () => {
     setSeeMoreLabel(seeMoreLabel === 'Zobacz więcej' ? 'Zwiń zawartość' : 'Zobacz więcej');
   }
 
   const handleGameModeChange = (e) => {
-
-  const selectedMode = e.target.value;
-  // Aktualizacja opisu trybu gry w zależności od wybranego trybu
+    const selectedMode = e.target.value;
     switch(selectedMode) {
       case "Swobodna":
         setGameModeDescription(
@@ -28,30 +26,29 @@ const GameSelector = () => {
           <>
             <h5>Jesteś w trybie wyzwania.</h5>
           </>
-          
         );
         break;
       default:
         setGameModeDescription("");
     }
-    setGameMode(e.target.value);
+    setGameMode(selectedMode);
     setSelectedMap(""); // Resetowanie wybranej mapy po zmianie trybu gry
   };
 
   const handleMapChange = (e) => {
-    setSelectedMap(e.target.value);
+    const selectedMapValue = e.target.value;
+    setSelectedMap(selectedMapValue);
+    onMapChange(selectedMapValue); // Informuje rodzica o zmianie mapy
   };
 
   return (
     <div>
-      <label for="checkbox" id="hamburger-label" onClick={handleSeeMoreLabel}>
+      <label htmlFor="checkbox" id="hamburger-label" onClick={handleSeeMoreLabel}>
         <div className="see-more-button">
           {seeMoreLabel}
         </div>
       </label>
       <input type="checkbox" id="checkbox"/>
-
-      
 
       <div className="gamemode-content">
         <div className="gamemode-description">
@@ -94,15 +91,14 @@ const GameSelector = () => {
             <label htmlFor="mapSelect">Wybierz mapę: <p/></label>
             <select className="form-select" id="mapSelect" value={selectedMap} onChange={handleMapChange}>
               <option value="">Wybierz mapę</option>
-              <option value="map1">Mapa 1</option>
-              <option value="map2">Mapa 2</option>
-              <option value="map3">Mapa 3</option>
+              <option value="monumentsTour">Trasa zabytków</option>
+              <option value="universityTour">Trasa uczelni</option>
+              <option value="moundTour">Trasa kopców</option>
             </select>
           </div>
-          
         )}
 
-      <br/><br/>  
+        <br/><br/>  
       </div>
     </div>
   );

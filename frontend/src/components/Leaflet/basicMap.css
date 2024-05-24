@@ -13,3 +13,32 @@
   padding-top: 10px; /* Dodatkowy padding na górze, aby odseparować treść od ramki */
   padding-bottom: 10px; /* Dodatkowy padding na dole, aby odseparować treść od ramki */
 }
+
+.popupContainer {
+  text-align: center;
+}
+
+.popupContainer h5 {
+  margin-bottom: 10px;
+}
+
+.popupContainer img {
+  width: 15rem;
+  height: 9rem;
+}
+
+.popupContainer p {
+  text-align: justify;
+  margin: 10px;
+}
+
+.popupContainer a {
+  text-decoration: none;
+  font-weight: bolder;
+  color : #276304 !important;
+  /* color : #29005e !important; */
+}
+.popupContainer a:hover {
+  color: #008caf !important;
+  /* color: #5e1db3 !important; */
+}
