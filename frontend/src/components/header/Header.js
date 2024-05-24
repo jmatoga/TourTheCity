@@ -7,16 +7,19 @@ function MainNavigationWithAlert() {
     <Navbar 
         id="main-navigation-bar"
     >
-      
+       {/* logo po kliknięciu którego /home */}
         <Navbar.Brand href="/home">Gra Terenowa</Navbar.Brand>
 
         <Nav 
           // className="main-navigation-bar" 
-          activeKey="/home"
+          activeKey="/home" //klucz elementu aktualnie (pierwotnie) aktywnego
           onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}>
             
           <Nav.Item>
-            <Nav.Link eventKey="/faq">
+            <Nav.Link 
+              //eventKey to unikalny klucz identyfikujący element nawigacyjny 
+              //może być do identyfikacji klikniętego elementu
+              eventKey="/faq">
               Historia
             </Nav.Link>
           </Nav.Item>
@@ -31,8 +34,11 @@ function MainNavigationWithAlert() {
        </Nav>
 
         <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end">
-        <Nav.Link id="account-element-right" eventKey="/account">Konto</Nav.Link>
+        
+        <Navbar.Collapse 
+          //zwija się na mneijszych ekranach
+          className="justify-content-end">
+        <Nav.Link id="account-element-right">Konto</Nav.Link>
         </Navbar.Collapse>
         
     </Navbar>

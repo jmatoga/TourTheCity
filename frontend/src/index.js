@@ -1,12 +1,14 @@
-import React from "react";
+import React from "react"; 
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./components/App";
+import App from "./components/App"; 
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
 
+//znajduje element DOM o id 'root' i tworzy w nim miejsce 
+//do renderowania komponentów React (metoda od React 18)
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(<App />); //początkowe renderowanie głównego komponentu App 
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

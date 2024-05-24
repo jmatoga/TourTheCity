@@ -1,0 +1,54 @@
+body{
+    overflow:hidden;
+}
+.gamemode-description{
+    text-align: center;
+    font-size: 14px;
+}
+#checkbox {
+    opacity: 0;
+    height: 0;
+}
+#hamburger-label{
+    display: none;
+    margin: 1rem 0 1rem 0;
+}
+.see-more-button{
+    display: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    padding: 15px;
+    width: 300px;
+    background-color: #517703;
+    color: #CED4DA;
+}
+.see-more-button:hover{
+    background-color: #597e0f;
+    color: #ececec;
+}
+.see-more-button:active {
+    background-color: #3a5306;
+    color: #ececec;
+}
+
+@media only screen and (max-width: 950px) {
+    body{
+        overflow: visible;
+    }
+    input:checked ~ .gamemode-content {
+        display: none;
+        opacity: 0;
+
+    }
+    #hamburger-label {
+        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .see-more-button{
+        display: inline-block;
+    }
+    
+}

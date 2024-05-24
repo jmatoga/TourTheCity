@@ -2,6 +2,7 @@ import "./App.css";
 import logo from "../logo.svg";
 import Header from "./header/Header";
 import AppContent from "./AppContent";
+import Footer from "./footer/Footer"
 
 function App() {
   return (
@@ -12,9 +13,9 @@ function App() {
           <div className="col-12">
             <AppContent />
           </div>
-          
         </div>
       </div>
+    <Footer className="footer"/>
     </div>
   );
 }

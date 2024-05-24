@@ -1,22 +1,30 @@
+body{
+    overflow: hidden;
+}
 .App{
     background-image: url('../resources/background_cracow.png'); /* Ścieżka do obrazu */
     background-size: cover; /* Dopasowanie obrazu do rozmiaru kontenera */
-    background-repeat: no-repeat; /* Wyłączenie powtarzania obrazu */
-    
+    background-repeat: no-repeat; /* Wyłączenie powtarzania obrazu */    
 }
 .App-logo {
     animation: App-logo-spin infinite 20s linear;
     height: 80px;
 }
+.container-fluid{
+    min-height: 88vh;
+}
   
 .App-header {
     background-color: #222;
-    height: 150px;
+    height: 10vh;
     padding: 20px;
     color: white;
     text-align: center;
 }
-  
+#footer{
+    padding: 2vh;
+    height: 6vh;
+}
 .App-title {
     font-size: 1.5em;
 }
@@ -24,7 +32,7 @@
 .App-intro {
     font-size: large;
 }
-  
+
 @keyframes App-logo-spin {
     from {
       transform: rotate(0deg);

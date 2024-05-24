@@ -22,7 +22,7 @@ export default class AuthContent extends React.Component {
   render() {
     return (
       <div>
-        <h1>wwwMessagesdsffffdddeeex</h1>
+        <h1>Message</h1>
         <ul>
           {this.state.data &&
             this.state.data.map((line) => {
