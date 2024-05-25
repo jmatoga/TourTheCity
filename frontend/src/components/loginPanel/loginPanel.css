@@ -1,0 +1,65 @@
+.header{
+    background-color: #517703;
+    padding: 10px;
+    color: #CED4DA;
+}
+.signInForm {
+    margin: 40px 0 0 0;
+    
+}
+.main-container {
+    max-width: 400px;
+    margin: auto;
+    border-radius: 10px;
+    padding: 20px;
+    min-height: calc(100vh - 60px); /* 60px footer*/  
+    background-color: rgba(250, 250, 250, 0.25);      
+}
+
+.form-container {
+    margin-top: 20px;
+}
+
+.text-input {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.remember-me {
+    margin-bottom: 10px;
+}
+
+.remember-me label {
+    margin-left: 5px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #517703;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.forgot-password a {
+    color: #517703;
+}
+.forgot-password a:hover {
+    color: #008caf;
+}
+.footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.footer a {
+    color: #517703;
+}
+.footer a:hover {
+    color: #008caf;
+}

@@ -2,6 +2,7 @@
   position: relative;
   width: 100%;
   max-width: 850px;
+  min-width: 500px;
   height: 73vh; /* calculate height of the screen minus the heading */
 }
   
