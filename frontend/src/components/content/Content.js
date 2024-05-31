@@ -1,19 +1,26 @@
 import React, { useState } from "react";
-import './content.css';
+import "./content.css";
+import { request } from "../axios_helper.js";
 
 const GameSelector = ({ onMapChange }) => {
   const [gameMode, setGameMode] = useState("Swobodna");
   const [selectedMap, setSelectedMap] = useState("");
-  const [gameModeDescription, setGameModeDescription] = useState(<><h5>Jesteś w trybie swobodnego zwiedzania.</h5></>);
+  const [gameModeDescription, setGameModeDescription] = useState(
+    <>
+      <h5>Jesteś w trybie swobodnego zwiedzania.</h5>
+    </>
+  );
   const [seeMoreLabel, setSeeMoreLabel] = useState("Zwiń zawartość");
 
   const handleSeeMoreLabel = () => {
-    setSeeMoreLabel(seeMoreLabel === 'Zobacz więcej' ? 'Zwiń zawartość' : 'Zobacz więcej');
-  }
+    setSeeMoreLabel(
+      seeMoreLabel === "Zobacz więcej" ? "Zwiń zawartość" : "Zobacz więcej"
+    );
+  };
 
   const handleGameModeChange = (e) => {
     const selectedMode = e.target.value;
-    switch(selectedMode) {
+    switch (selectedMode) {
       case "Swobodna":
         setGameModeDescription(
           <>
@@ -43,19 +50,22 @@ const GameSelector = ({ onMapChange }) => {
 
   return (
     <div>
-      <label htmlFor="checkbox" id="hamburger-label" onClick={handleSeeMoreLabel}>
-        <div className="see-more-button">
-          {seeMoreLabel}
-        </div>
+      <label
+        htmlFor="checkbox"
+        id="hamburger-label"
+        onClick={handleSeeMoreLabel}
+      >
+        <div className="see-more-button">{seeMoreLabel}</div>
       </label>
-      <input type="checkbox" id="checkbox"/>
+      <input type="checkbox" id="checkbox" />
 
       <div className="gamemode-content">
         <div className="gamemode-description">
           {gameModeDescription}
           Aby dostosować wypełnij poniższe pola.
         </div>
-        <br/><br/>
+        <br />
+        <br />
         <div>
           <div className="form-check">
             <input
@@ -67,7 +77,9 @@ const GameSelector = ({ onMapChange }) => {
               checked={gameMode === "Swobodna"}
               onChange={handleGameModeChange}
             />
-            <label className="form-check-label" htmlFor="swobodna">Swobodna</label>
+            <label className="form-check-label" htmlFor="swobodna">
+              Swobodna
+            </label>
           </div>
 
           <div className="form-check">
@@ -80,16 +92,25 @@ const GameSelector = ({ onMapChange }) => {
               checked={gameMode === "Wyzwanie"}
               onChange={handleGameModeChange}
             />
-            <label className="form-check-label" htmlFor="wyzwanie">Wyzwanie</label>
+            <label className="form-check-label" htmlFor="wyzwanie">
+              Wyzwanie
+            </label>
           </div>
         </div>
 
-        <br/>
+        <br />
 
         {gameMode === "Wyzwanie" && (
           <div>
-            <label htmlFor="mapSelect">Wybierz mapę: <p/></label>
-            <select className="form-select" id="mapSelect" value={selectedMap} onChange={handleMapChange}>
+            <label htmlFor="mapSelect">
+              Wybierz mapę: <p />
+            </label>
+            <select
+              className="form-select"
+              id="mapSelect"
+              value={selectedMap}
+              onChange={handleMapChange}
+            >
               <option value="">Wybierz mapę</option>
               <option value="monumentsTour">Trasa zabytków</option>
               <option value="universityTour">Trasa uczelni</option>
@@ -98,7 +119,8 @@ const GameSelector = ({ onMapChange }) => {
           </div>
         )}
 
-        <br/><br/>  
+        <br />
+        <br />
       </div>
     </div>
   );

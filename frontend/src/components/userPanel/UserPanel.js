@@ -1,61 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { request } from "../axios_helper.js";
 import Cookies from "js-cookie";
-import "./loginPanel.css"; // Importujemy plik CSS dla stylizacji
+import "./userPanel.css"; // Importujemy plik CSS dla stylizacji
 
-function LoginPanel({ onLogin }) {
+function UserPanel() {
   let navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [info, setInfo] = useState("");
+  const [user, setUserData] = useState("");
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    request("post", "http://localhost:8090/api/auth/login", {
-      email: email,
-      password: password,
-    })
-      .then((response) => {
-        Cookies.set("accessToken", response.data.token);
-        setInfo("Zalogowano pomyślnie!");
-        onLogin(true); // Aktualizuj stan logowania
-        navigate("/");
-      })
-      .catch((error) => {
-        setInfo("Niepoprawny email lub hasło");
-        console.log(error);
-      });
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://localhost:8090/api/current-user`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setUserData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
       <div className="main-container">
+        <h2>{`${user.name} ${user.surname}`}</h2>
         <div className="signInForm">
           <h3>Witaj w Grze Terenowej!</h3>
           <h5>Zaloguj się, aby kontynuować</h5>
-          <form className="form-container" onSubmit={handleLogin}>
+          <form className="form-container">
             <input
-              className="text-input"
+              className="text"
               type="email"
               placeholder="Adres email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={user.email}
+              // onChange={(e) => setEmail(e.target.value)}
               autoFocus
             />
             <input
               className="text-input"
               type="password"
               placeholder="Hasło"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              // value={userpassword}
+              // onChange={(e) => setPassword(e.target.value)}
             />
             <div className="remember-me">
               <input type="checkbox" id="remember" name="remember" />
               <label htmlFor="remember">Zapamiętaj mnie</label>
             </div>
-            {info && <p className="error-message">{info}</p>}
+            {/* {info && <p className="error-message">{info}</p>} */}
             <button
               className="submit-btn"
               type="submit"
@@ -82,4 +80,4 @@ function LoginPanel({ onLogin }) {
   );
 }
 
-export default LoginPanel;
+export default UserPanel;

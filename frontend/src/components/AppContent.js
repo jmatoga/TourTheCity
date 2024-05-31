@@ -1,7 +1,7 @@
 import React from "react";
 import "./appContent.css";
 
-import logo from "../logo.svg";
+import logo from "../components/logo.svg";
 import Header from "./header/Header";
 import AuthContent from "./AuthContent";
 import BasicMap from "./Leaflet/basicMap";

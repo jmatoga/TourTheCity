@@ -1,4 +1,4 @@
-package jkd.tourthecity.config;
+package jkd.tourthecity.configuration;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

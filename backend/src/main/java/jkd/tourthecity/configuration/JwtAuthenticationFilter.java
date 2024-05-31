@@ -1,4 +1,4 @@
-package jkd.tourthecity.config;
+package jkd.tourthecity.configuration;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
