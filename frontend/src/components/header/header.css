@@ -1,7 +1,7 @@
 .navbar{
     background-color: #517703;
-    padding: 10px;
     color: #CED4DA;
+    height: 60px;
 }
 a.navbar-brand{
     margin-left: 15px;

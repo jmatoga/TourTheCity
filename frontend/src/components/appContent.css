@@ -1,6 +1,7 @@
 .AppContent {
     display: flex;
     flex-direction: column;
+    min-height: calc(100vh - 60px);
 }
   
 .map-and-selector-container {
@@ -12,10 +13,13 @@
 }
   
 .map-container{
-    min-width: 550px;
+    min-width: 450px;
     flex: 1 1 50%;
 }
 .selector-container {
     margin: 0 2rem 0 2rem;
     flex: 1 0 30%;
+}
+.container-fluid{
+    min-height: 88vh;
 }

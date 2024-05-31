@@ -9,21 +9,14 @@ body{
 .App-logo {
     animation: App-logo-spin infinite 20s linear;
     height: 80px;
-}
-.container-fluid{
-    min-height: 88vh;
-}
-  
-.App-header {
-    background-color: #222;
-    height: 10vh;
-    padding: 20px;
-    color: white;
-    text-align: center;
-}
+}  
+
 #footer{
     padding: 2vh;
     height: 6vh;
+}
+.content {
+    min-height: 480px;
 }
 .App-title {
     font-size: 1.5em;
