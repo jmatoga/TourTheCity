@@ -3,17 +3,19 @@
     padding: 10px;
     color: #CED4DA;
 }
-.signInForm {
-    margin: 40px 0 0 0;
-    
-}
+
 .main-container {
-    max-width: 1000px;
+    max-width: 1200px; /* Zwiększamy maksymalną szerokość kontenera */
     margin: auto;
     border-radius: 10px;
     padding: 20px;
-    min-height: calc(100vh - 60px); /* 60px footer*/  
-    background-color: rgba(250, 250, 250, 0.25);      
+    min-height: calc(100vh - 60px);
+    background-color: rgba(250, 250, 250, 0.25);
+}
+
+.table {
+    width: 100%; /* Ustawiamy szerokość tabeli na 100% */
+    overflow-x: auto;
 }
 
 .form-container {

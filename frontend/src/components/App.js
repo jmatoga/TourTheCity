@@ -13,6 +13,7 @@ import LoginPanel from "./loginPanel/LoginPanel";
 import UserPanel from "./userPanel/UserPanel";
 import ContactPanel from "./contactPanel/ContactPanel";
 import FaqPanel from "./faqPanel/FaqPanel";
+import HistoryPanel from "./historyPanel/HistoryPanel";
 import AchievementsPanel from "./achievementsPanel/AchievementsPanel";
 import RegisterPage from "./loginPanel/RegisterPanel"; // Importujemy RegisterPage
 import Cookies from "js-cookie";
@@ -60,6 +61,10 @@ function App() {
     return isLoggedIn ? <FaqPanel /> : <Navigate to="/" />;
   };
 
+  const renderHistoryPage = () => {
+    return isLoggedIn ? <HistoryPanel /> : <Navigate to="/" />;
+  };
+
   return (
     <Router>
       <div className="App">
@@ -72,6 +77,7 @@ function App() {
           <Route path="/achievements" element={renderAchievementsPage()} />
           <Route path="/contact" element={renderContactPage()} />
           <Route path="/faq" element={renderFaqPage()} />
+          <Route path="/history" element={renderHistoryPage()} />
         </Routes>
         <Footer className="footer" />
       </div>

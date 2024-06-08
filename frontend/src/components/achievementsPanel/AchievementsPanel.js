@@ -1,19 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { request } from "../axios_helper.js";
-import Cookies from "js-cookie";
 import "./AchievementsPanel.css"; // Importujemy plik CSS dla stylizacji
-import axios from "axios";
 
 function AchievementsPanel() {
-  let navigate = useNavigate();
-
-  // const [achievements, setAchievementsData] = useState({
-  //   name: "",
-  //   description: "",
-  //   progress: "",
-  // });
-
   const [achievements, setAchievementsData] = useState([]);
 
   useEffect(() => {
