@@ -1,12 +1,8 @@
 package jkd.tourthecity.service;
 
 import jakarta.transaction.Transactional;
-import jkd.tourthecity.dto.UserDTO;
 import jkd.tourthecity.dto.UserDetailsDTO;
-import jkd.tourthecity.model.ERole;
-import jkd.tourthecity.model.RefreshToken;
 import jkd.tourthecity.model.User;
-import jkd.tourthecity.security.payload.response.MessageResponse;
 import jkd.tourthecity.validation.UserRoleValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,8 +14,6 @@ import jkd.tourthecity.exception.*;
 import jkd.tourthecity.repository.*;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -27,34 +21,16 @@ public class UserServiceImpl implements UserService {
     private final UserRoleValidator userRoleValidator;
     private UserRepository userRepository;
     private PasswordEncoder encoder;
-    private final RefreshTokenRepository refreshTokenRepository;
-
-//    @Override
-//    public User getCurrentUser() throws CurrentUserNotAuthenticatedException {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        System.out.println(SecurityContextHolder.getContext().getAuthentication());
-//        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-//            System.out.println(authentication.getName());
-//            System.out.println(authentication.getPrincipal());
-//            return userRepository.findByEmail(authentication.getName())
-//                           .orElseThrow(() -> new RuntimeException("Current user not found!"));
-//        } else throw new CurrentUserNotAuthenticatedException();
-//    }
 
     @Override
-    public User getCurrentUser(String token) throws CurrentUserNotAuthenticatedException {
-        Optional<RefreshToken> refreshToken = refreshTokenRepository.findByToken(token);
-        if (refreshToken.isPresent()) {
-            return refreshToken.get().getUser();
+    public User getCurrentUser() throws CurrentUserNotAuthenticatedException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            return userRepository.findByEmail(authentication.getName())
+                           .orElseThrow(() -> new RuntimeException("Current user not found!"));
         } else throw new CurrentUserNotAuthenticatedException();
     }
 
-
-    @Override
-    public List<String> getUserById(String userId) {
-        return userRepository.findAllByUserId(userId);
-               // .orElseThrow(() -> new UserNotFoundException("User not found with ID: " + userId));
-    }
 
     @Override
     public List<User> getAllUsers() {
@@ -72,30 +48,28 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUser(String id) {
-        return userRepository.findById(id)
-                       .orElseThrow(() -> new RuntimeException("User with ID: " + id + " not found!"));
+    public User getUserById(String userId) {
+        return userRepository.findById(userId)
+                       .orElseThrow(() -> new RuntimeException("User with ID: " + userId + " not found!"));
     }
 
     @Override
     public void updateUserDetails(UserDetailsDTO userDTO) {
-        User user = userRepository.findById(userDTO.id())
-                       .orElseThrow(() -> new RuntimeException("User with ID: " + userDTO.id() + " not found!"));
-        if(userDTO.name() != null)
+        User user = getUserById(userDTO.id());
+        if(userDTO.name() != null && !userDTO.name().isEmpty())
             user.setName(userDTO.name());
-        if(userDTO.surname() != null)
+        if(userDTO.surname() != null && !userDTO.surname().isEmpty())
             user.setSurname(userDTO.surname());
-        if(userDTO.email() != null)
+        if(userDTO.email() != null && !userDTO.email().isEmpty())
             user.setEmail(userDTO.email());
-        if(userDTO.password() != null)
+        if(userDTO.password() != null && !userDTO.password().isEmpty())
             user.setPassword(encoder.encode(userDTO.password()));
         userRepository.save(user);
     }
 
     @Override
     public boolean isModeratorOrAdmin(String userId) {
-        User user = userRepository.findById(userId)
-                       .orElseThrow(() -> new RuntimeException("User with ID: " + userId + " not found!"));
+        User user = getUserById(userId);
         return userRoleValidator.isModeratorOrAdmin(user);
     }
 

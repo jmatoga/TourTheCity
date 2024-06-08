@@ -7,6 +7,7 @@ import jkd.tourthecity.security.payload.response.MessageResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class ContactController {
     }
 
     @GetMapping("/contact")
+    @PreAuthorize("hasRole('ROLE_MODERATOR')" + "or hasRole('ROLE_ADMIN')" )
     public ResponseEntity<List<Contact>> getAllContacts() {
         return ResponseEntity.ok(contactRepository.findAll());
     }

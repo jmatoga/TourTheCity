@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./content.css";
-import { request } from "../axios_helper.js";
+import WeatherDisplay from "./Weather.js";
 
 const GameSelector = ({ onMapChange }) => {
   const [gameMode, setGameMode] = useState("Swobodna");
@@ -60,7 +60,8 @@ const GameSelector = ({ onMapChange }) => {
       <input type="checkbox" id="checkbox" />
 
       <div className="gamemode-content">
-        <div className="gamemode-description">
+        <WeatherDisplay />
+        <div className="gamemode-description mt-5">
           {gameModeDescription}
           Aby dostosować wypełnij poniższe pola.
         </div>

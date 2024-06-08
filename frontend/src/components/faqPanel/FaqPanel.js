@@ -1,5 +1,5 @@
 import React from "react";
-import "./FaqPanel.css"; // Importujemy plik CSS dla stylizacji
+import "./FaqPanel.css"; // Importing CSS file for styling
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function FaqPanel() {
@@ -66,6 +66,7 @@ function FaqPanel() {
 
   return (
     <div className="faq-container">
+      {console.log("Rendering FAQ Panel")}
       <FAQ />
     </div>
   );

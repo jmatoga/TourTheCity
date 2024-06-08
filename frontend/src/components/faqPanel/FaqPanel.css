@@ -63,3 +63,9 @@
 .footer a:hover {
     color: #008caf;
 }
+
+.faq-container {
+    display: block;
+    padding: 20px;
+  }
+  

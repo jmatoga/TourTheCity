@@ -52,3 +52,18 @@ body{
     }
     
 }
+
+.chart-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .chart-container h2 {
+    margin-bottom: 20px;
+    text-align: center; /* Center the text within the h2 */
+  }
+  
+
+  

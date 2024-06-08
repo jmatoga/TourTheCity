@@ -3,7 +3,6 @@ package jkd.tourthecity.configuration;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -57,21 +56,6 @@ public class WebSecurityConfig {
         source.registerCorsConfiguration("/api/**", configuration);
         return source;
     }
-
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        return http
-//                       .csrf(csrf -> csrf.disable())
-//                       .cors()
-//                       .and()
-//                       .authorizeHttpRequests(auth ->
-//                                                      auth.requestMatchers(allowedPaths).permitAll().anyRequest().authenticated())
-//                       .sessionManagement(ses -> ses.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//                       .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
-//                       .and()
-//                       .addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class)
-//                       .build();
-//    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

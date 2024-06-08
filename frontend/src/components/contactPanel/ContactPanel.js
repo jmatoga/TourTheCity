@@ -20,12 +20,16 @@ function ContactPanel() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8090/api/userRoles/${Cookies.get("userId")}`)
+      .get(`http://localhost:8090/api/userRoles`, {
+        withCredentials: true, // Włączanie przekazywania ciasteczek
+      })
       .then((response) => {
         setIsModOrAdm(response.data);
         if (response.data == true) {
           axios
-            .get(`http://localhost:8090/api/contact`)
+            .get(`http://localhost:8090/api/contact`, {
+              withCredentials: true, // Włączanie przekazywania ciasteczek
+            })
             .then((response) => {
               setContactList(response.data);
             })
@@ -49,7 +53,9 @@ function ContactPanel() {
       return;
     }
     axios
-      .post(`http://localhost:8090/api/contact`, contact)
+      .post(`http://localhost:8090/api/contact`, contact, {
+        withCredentials: true, // Włączanie przekazywania ciasteczek
+      })
       .then((res) => {
         alert("Formularz wysłany pomyślnie!");
         navigate("/");
@@ -69,9 +75,9 @@ function ContactPanel() {
     <>
       <div className="main-container">
         <div className="signInForm">
-          <h3>Lista zgłoszeń problemów: </h3>
           {isModeratorOrAdmin && (
             <div className="table-responsive">
+              <h3>Lista zgłoszeń problemów: </h3>
               <table className="table">
                 <thead>
                   <tr>
@@ -94,6 +100,7 @@ function ContactPanel() {
           )}
           {!isModeratorOrAdmin && (
             <>
+              <h1>Masz problem?</h1>
               <h5>Skontaktuj się z nami poprzez formularz na dole:</h5>
               <form className="form-container" onSubmit={handleSubmit}>
                 <input

@@ -71,7 +71,7 @@ function App() {
           <Route path="/details" element={renderDetailsPage()} />
           <Route path="/achievements" element={renderAchievementsPage()} />
           <Route path="/contact" element={renderContactPage()} />
-          <Route path="/faq" element={renderFaqPage} />
+          <Route path="/faq" element={renderFaqPage()} />
         </Routes>
         <Footer className="footer" />
       </div>

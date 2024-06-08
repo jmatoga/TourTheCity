@@ -38,7 +38,7 @@ public class AuthController {
             refreshTokenService.deleteByToken(refreshToken);
         else {
             try {
-                refreshTokenService.deleteByUserId(userService.getCurrentUser(refreshToken).getId());
+                refreshTokenService.deleteByUserId(userService.getCurrentUser().getId());
             } catch (CurrentUserNotAuthenticatedException e) {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
             }

@@ -9,16 +9,19 @@ import jkd.tourthecity.security.services.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 import jkd.tourthecity.configuration.PropertiesConfig;
 import jkd.tourthecity.security.services.UserDetailsServiceImpl;
 import jkd.tourthecity.service.RefreshTokenService;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 @Log
 @RequiredArgsConstructor
@@ -28,27 +31,24 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     private final UserDetailsServiceImpl userDetailsService;
     private final PropertiesConfig propertiesConfig;
 
-
     private String getJwtFromAccessCookie(HttpServletRequest request) {
+        String authHeader = request.getHeader("Authorization");
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            return authHeader.substring(7); // Wycinamy "Bearer "
+        }
+
         Cookie[] cookies = request.getCookies();
-        String accessToken;
-        if(cookies!=null) {
+        if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (propertiesConfig.getAccessTokenCookieName().equals(cookie.getName())) {
-                    accessToken = cookie.getValue();
-                    if (accessToken != null) return accessToken;
+                    return cookie.getValue();
                 }
             }
         }
-        else {
-            String authHeader = request.getHeader("Authorization");
-            if(authHeader!=null) {
-                accessToken = authHeader.substring("Bearer ".length());
-                if(!accessToken.equals("")) return accessToken;
-            }
-        }
+
         return null;
     }
+
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

@@ -16,7 +16,6 @@ public class AllowedPathsConfig {
                 propertiesConfig.getPATH_LOGIN(),
                 propertiesConfig.getPATH_LOGOUT(),
                 "/api/auth/**",
-                "/api/**"
         };
     }
 }

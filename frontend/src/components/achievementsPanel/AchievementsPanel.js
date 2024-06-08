@@ -19,9 +19,10 @@ function AchievementsPanel() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:8090/api/achievements/${Cookies.get("userId")}`
-        );
+        const response = await fetch(`http://localhost:8090/api/achievements`, {
+          method: "GET",
+          credentials: "include",
+        });
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

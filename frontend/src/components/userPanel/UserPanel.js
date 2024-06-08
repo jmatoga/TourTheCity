@@ -29,9 +29,10 @@ function UserPanel({ onLogin }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:8090/api/current-user/${Cookies.get("userId")}`
-        );
+        const response = await fetch(`http://localhost:8090/api/current-user`, {
+          method: "GET",
+          credentials: "include",
+        });
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -55,7 +56,9 @@ function UserPanel({ onLogin }) {
     e.preventDefault();
     setUserDTOData(user);
     axios
-      .put(`http://localhost:8090/api/userDetails`, userDTO)
+      .put(`http://localhost:8090/api/userDetails`, userDTO, {
+        withCredentials: true,
+      })
       .then((res) => {
         alert("Dane zmienione pomyślnie!");
         navigate("/");
@@ -123,7 +126,7 @@ function UserPanel({ onLogin }) {
               type="submit"
               id="SaveChangesButton"
               name="SaveChangesButton"
-              onSubmit={handleSubmit}
+              onClick={handleSubmit}
             >
               Zapisz zmiany
             </button>

@@ -1,9 +1,6 @@
 package jkd.tourthecity.service;
 
 
-//import com.google.gson.Gson;
-//import com.google.gson.JsonObject;
-
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -15,15 +12,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import jkd.tourthecity.configuration.PropertiesConfig;
-//import jkd.tourthecity.exception.InvalidResetPasswordException;
-//import jkd.tourthecity.exception.UserInactiveException;
 import jkd.tourthecity.model.RefreshToken;
 import jkd.tourthecity.model.User;
-//import jkd.tourthecity.repository.PasswordResetRepository;
 import jkd.tourthecity.repository.UserRepository;
 import jkd.tourthecity.security.jwt.JwtUtils;
 import jkd.tourthecity.security.payload.request.LoginRequest;
-//import jkd.tourthecity.security.payload.request.ResetPasswordRequestFromMail;
 import jkd.tourthecity.security.payload.response.JwtResponse;
 import jkd.tourthecity.security.services.UserDetailsImpl;
 
