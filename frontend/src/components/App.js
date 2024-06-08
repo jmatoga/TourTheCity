@@ -7,9 +7,13 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import Footer from "./footer/Footer";
+import Header from "./header/Header";
 import AppContent from "./AppContent";
 import LoginPanel from "./loginPanel/LoginPanel";
 import UserPanel from "./userPanel/UserPanel";
+import ContactPanel from "./contactPanel/ContactPanel";
+import FaqPanel from "./faqPanel/FaqPanel";
+import AchievementsPanel from "./achievementsPanel/AchievementsPanel";
 import RegisterPage from "./loginPanel/RegisterPanel"; // Importujemy RegisterPage
 import Cookies from "js-cookie";
 
@@ -36,14 +40,38 @@ function App() {
     return isLoggedIn ? <Navigate to="/" /> : <RegisterPage />;
   };
 
+  const renderDetailsPage = () => {
+    return isLoggedIn ? (
+      <UserPanel onLogin={setIsLoggedIn} />
+    ) : (
+      <Navigate to="/" />
+    );
+  };
+
+  const renderAchievementsPage = () => {
+    return isLoggedIn ? <AchievementsPanel /> : <Navigate to="/" />;
+  };
+
+  const renderContactPage = () => {
+    return isLoggedIn ? <ContactPanel /> : <Navigate to="/" />;
+  };
+
+  const renderFaqPage = () => {
+    return isLoggedIn ? <FaqPanel /> : <Navigate to="/" />;
+  };
+
   return (
     <Router>
       <div className="App">
+        {isLoggedIn && <Header className="header" />}
         <Routes>
           <Route path="/login" element={renderLoginPage()} />
           <Route path="/" element={renderAppContent()} />
           <Route path="/register" element={renderRegisterPage()} />
-          {isLoggedIn && <Route path="/details" element={<UserPanel />} />}
+          <Route path="/details" element={renderDetailsPage()} />
+          <Route path="/achievements" element={renderAchievementsPage()} />
+          <Route path="/contact" element={renderContactPage()} />
+          <Route path="/faq" element={renderFaqPage} />
         </Routes>
         <Footer className="footer" />
       </div>

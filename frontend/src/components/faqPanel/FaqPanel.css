@@ -46,16 +46,6 @@
     cursor: pointer;
 }
 
-.danger-btn {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #fc0505;
-    color: #FFFFFF;
-    cursor: pointer;
-}
-
 .forgot-password a {
     color: #517703;
 }

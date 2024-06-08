@@ -19,6 +19,7 @@ function LoginPanel({ onLogin }) {
     })
       .then((response) => {
         Cookies.set("accessToken", response.data.token);
+        Cookies.set("userId", response.data.id);
         setInfo("Zalogowano pomyślnie!");
         onLogin(true); // Aktualizuj stan logowania
         navigate("/");

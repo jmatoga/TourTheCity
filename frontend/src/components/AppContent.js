@@ -26,7 +26,6 @@ export default class AppContent extends React.Component {
   render() {
     return (
       <div className="AppContent">
-        <Header pageTitle="Tour The City" logoSrc={logo} />
         <div className="container-fluid">
           <div className="map-and-selector-container">
             <div className="map-container">
