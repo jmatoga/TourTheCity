@@ -54,8 +54,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUserDetails(UserDetailsDTO userDTO) {
-        User user = getUserById(userDTO.id());
+    public void updateUserDetails(UserDetailsDTO userDTO) throws CurrentUserNotAuthenticatedException {
+        User user = getCurrentUser();
         if(userDTO.name() != null && !userDTO.name().isEmpty())
             user.setName(userDTO.name());
         if(userDTO.surname() != null && !userDTO.surname().isEmpty())

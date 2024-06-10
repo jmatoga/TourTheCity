@@ -19,7 +19,6 @@ function UserPanel({ onLogin }) {
   });
 
   const [userDTO, setUserDTOData] = useState({
-    id: Cookies.get("userId"),
     name: "",
     surname: "",
     email: "",

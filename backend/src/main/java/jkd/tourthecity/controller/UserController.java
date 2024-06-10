@@ -38,7 +38,7 @@ public class UserController {
 
     @PutMapping("/userDetails")
     @PreAuthorize("hasRole('ROLE_USER')" + "or hasRole('ROLE_MODERATOR')" + "or hasRole('ROLE_ADMIN')" )
-    ResponseEntity<MessageResponse> updateUserDetails(@RequestBody UserDetailsDTO userDTO) {
+    ResponseEntity<MessageResponse> updateUserDetails(@RequestBody UserDetailsDTO userDTO) throws CurrentUserNotAuthenticatedException {
         userService.updateUserDetails(userDTO);
         return ResponseEntity.ok(new MessageResponse("User details updated successfully!"));
     }

@@ -15,7 +15,7 @@ public interface UserService {
 
     User getUserById(String id);
 
-    void updateUserDetails(UserDetailsDTO userDTO);
+    void updateUserDetails(UserDetailsDTO userDTO) throws CurrentUserNotAuthenticatedException;
 
     boolean isModeratorOrAdmin(String userId);
 }

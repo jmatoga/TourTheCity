@@ -19,7 +19,6 @@ function LoginPanel({ onLogin }) {
     })
       .then((response) => {
         Cookies.set("accessToken", response.data.token);
-        Cookies.set("userId", response.data.id);
         setInfo("Zalogowano pomyślnie!");
         onLogin(true); // Aktualizuj stan logowania
         navigate("/");
@@ -63,11 +62,11 @@ function LoginPanel({ onLogin }) {
               id="SignInButton"
               name="SignInButton"
             >
-              Sign In
+              Zaloguj się
             </button>
-            <div className="forgot-password">
+            {/* <div className="forgot-password">
               <a href="#">Zapomniałeś hasła?</a>
-            </div>
+            </div> */}
             <div className="footer">
               <p>
                 Nie masz konta?
