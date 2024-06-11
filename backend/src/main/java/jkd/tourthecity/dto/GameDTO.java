@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class GameDTO {
     private String startTime;
-    private String endTime;
+    private String endTime = "";
     private Integer gameStatus;
     private Integer points;
     private String location;
@@ -22,7 +22,10 @@ public class GameDTO {
 
     public GameDTO(Game game, Map map) {
         this.startTime = game.getStartTime().toString();
-        this.endTime = game.getEndTime().toString();
+        if(game.getEndTime() == null)
+            this.endTime = "";
+        else
+            this.endTime = game.getEndTime().toString();
         this.gameStatus = game.getGameStatus();
         this.points = game.getPoints();
         this.location = map.getLocation();
